@@ -5,10 +5,6 @@ presubmits:
     decorate: true
     labels:
       preset-dind-enabled: "true"
-    decoration_config:
-      ssh_key_secrets:
-      - google-prow-robot-ssh
-    clone_uri: "git@github.com:google/exposure-notifications-server.git"
     spec:
       containers:
       - image: gcr.io/cloud-devrel-public-resources/exposure-notifications/presubmit-test
