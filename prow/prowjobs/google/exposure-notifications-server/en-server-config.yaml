@@ -3,18 +3,21 @@ presubmits:
   - name: pull-release-unit
     always_run: true
     decorate: true
+    labels:
+      preset-dind-enabled: "true"
     decoration_config:
       ssh_key_secrets:
-        - google-prow-robot-ssh
+      - google-prow-robot-ssh
     clone_uri: "git@github.com:google/exposure-notifications-server.git"
     spec:
       containers:
-        - image: gcr.io/apollo-server-273118/exposure-notifications-test
-          command:
-            - bash
-          args:
-            - -c
-            - ./scripts/presubmit.sh
-          env:
-            - name: GO111MODULE
-              value: "on"
+      - image: gcr.io/cloud-devrel-public-resources/exposure-notifications/presubmit-test
+        command:
+        - /bin/runner.sh
+        args:
+        - ./scripts/presubmit.sh
+        env:
+        - name: GO111MODULE
+          value: "on"
+        securityContext:
+          privileged: true
