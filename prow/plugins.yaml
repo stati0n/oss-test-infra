@@ -25,6 +25,7 @@ approve:
 - repos:
   - GoogleCloudPlatform
   - googleforgames
+  - google/exposure-notifications-server
   require_self_approval: false
 
 lgtm:
@@ -101,3 +102,17 @@ plugins:
   # https://github.com/kubernetes/test-infra/issues/14743
   https://kunit-review.googlesource.com/linux:
   - trigger
+
+  google/exposure-notifications-server:
+  - approve
+  - assign
+  - blunderbuss
+  - golint
+  - hold
+  - label
+  - lgtm
+  - lifecycle
+  - size
+  - trigger
+  - verify-owners
+  - wip
